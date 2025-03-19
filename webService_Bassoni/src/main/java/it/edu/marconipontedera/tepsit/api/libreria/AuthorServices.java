@@ -9,6 +9,9 @@ import javax.ws.rs.PathParam;
 
 @Path("books/{book_id}/authors")
 public class AuthorServices {
+	
+	public static Library library;
+	
 	@GET
 	public List<Author> list(@PathParam("{book_id}") long bookId) {
 		Author author = new Author();
