@@ -4,6 +4,21 @@ public class Author {
 	private long id;
 	private String name;
 	private String surname;
+	
+	public Author() {
+		this(null, null);
+	}
+	
+	public Author(String name, String surname) {
+		this(name, surname, -1);
+	}
+	
+	public Author(String name, String surname, int id) {
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+	}
+	
 	public long getId() {
 		return id;
 	}

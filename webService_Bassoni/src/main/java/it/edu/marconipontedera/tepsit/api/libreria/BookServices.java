@@ -46,6 +46,7 @@ public class BookServices {
 	@DELETE
 	@Path("{id}")
 	public Response delete(@PathParam("{id}") long id) {
+		library.remove(id);
 		return Response.noContent().build();
 	}
 }

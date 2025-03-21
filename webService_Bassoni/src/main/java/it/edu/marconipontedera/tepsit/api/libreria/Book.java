@@ -8,7 +8,20 @@ public class Book {
 	private String language;
 	private List<Author> authors;
 	
+	public Book() {
+		this(null, null, null);
+	}
 	
+	public Book(String title, String language, List<Author> authors) {
+		this(title, language, authors, -1);
+	}
+	
+	public Book(String title, String language, List<Author> authors, long id) {
+		this.id = id;
+		this.title = title;
+		this.language = language;
+		this.authors = authors;
+	}
 	
 	public long getId() {
 		return id;
