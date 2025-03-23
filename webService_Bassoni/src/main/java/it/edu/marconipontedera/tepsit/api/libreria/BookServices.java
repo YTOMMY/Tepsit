@@ -21,32 +21,40 @@ public class BookServices {
 	
 	@GET
 	public List<Book> list() {
+		System.out.println("list()");
 		return library.getAll();
 	}
 	
 	@GET
 	@Path("{id}")
-	public Book get(@PathParam("{id}") long id) {
+	public Book get(@PathParam("id") long id) {
+		System.out.println("get(" + id + ")");
 		return library.get(id);
 	}
 	
 	@POST
 	public Response add(Book book) throws URISyntaxException {
+		System.out.println("add()");
 		long newId = library.add(book);
+		library.save();
 		return Response.created(new URI("api/books/" + newId)).build();
 	}
 	
 	@PUT
 	@Path("{id}")
-	public Response update(@PathParam("{id}") long id, Book book) {
+	public Response update(@PathParam("id") long id, Book book) {
+		System.out.println("update(" + id + ")");
 		library.update(id, book);
+		library.save();
 		return Response.noContent().build();
 	}
 	
 	@DELETE
 	@Path("{id}")
-	public Response delete(@PathParam("{id}") long id) {
+	public Response delete(@PathParam("id") long id) {
+		System.out.println("delete(" + id + ")");
 		library.remove(id);
+		library.save();
 		return Response.noContent().build();
 	}
 }

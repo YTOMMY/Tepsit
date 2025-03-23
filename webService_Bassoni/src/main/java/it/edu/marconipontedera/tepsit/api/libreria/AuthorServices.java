@@ -9,7 +9,7 @@ import javax.ws.rs.PathParam;
 @Path("books/{book_id}/authors")
 public class AuthorServices {	
 	@GET
-	public List<Author> list(@PathParam("{book_id}") long bookId) {
+	public List<Author> list(@PathParam("book_id") long bookId) {
 		return new BookServices().get(bookId).getAuthors();
 	}
 }

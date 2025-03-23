@@ -22,23 +22,42 @@ public class Library {
 	Path path;
 	
 	public Library() {
+		this("");
+	}
+	
+	public Library(String path) {
 		books = new ArrayList<Book>();
 		currentId = -1;
+		if(path != "") {
+			this.path = Paths.get(path);
+		}
+		else {
+			this.path = null;
+		}
 	}
 	
 	public static Library getFromFile(String path) {
 		String json;
 		try {
 			json = new String(Files.readAllBytes(Paths.get(path)));
+			System.out.println("[library] file trovato");
 			ObjectMapper mapper = new ObjectMapper();
 			Library library = mapper.readValue(json, Library.class);
+			System.out.println("[library] Library inizializzata con successo");
+			if(library.isEmpty()) {
+				System.out.println("[library] libreria vuota");
+			} else {
+				System.out.println("[library] libreria riempita");
+			}
+			library.setPath(path);
 			return library;
 		} catch (IOException e) {
-			return null;
+			System.out.println("[library] inizializzazione Library non riuscita");
+			return new Library(path);
 		}
 	}
 
-	public void save(String path) {
+	public synchronized void save() {
 		String json;
     	try {
         	ObjectMapper mapper = new ObjectMapper();
@@ -48,10 +67,19 @@ public class Library {
 			return;
 		}
     	try {
-			Files.write(Paths.get(path), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+			Files.write(path, json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public synchronized void setPath(String path) {
+		this.path = Paths.get(path);
+	}
+	
+	@JsonIgnore
+	public synchronized String getPath() {
+		return path.toString();
 	}
 	
 	private synchronized long nextId() {
@@ -59,6 +87,8 @@ public class Library {
 		return currentId;
 	}
 	
+
+	@JsonIgnore
 	public synchronized boolean isEmpty() {
 		return books.isEmpty();
 	}

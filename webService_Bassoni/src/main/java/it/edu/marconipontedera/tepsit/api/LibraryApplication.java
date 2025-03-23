@@ -1,6 +1,7 @@
 package it.edu.marconipontedera.tepsit.api;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.ApplicationPath;
@@ -19,8 +20,9 @@ public class LibraryApplication extends ResourceConfig {
         packages("it.edu.marconipontedera.tepsit.api.libreria");
         packages("it.edu.marconipontedera.tepsit.api.test");
         
-        Library library = Library.getFromFile("data.json");
+        Library library = Library.getFromFile("libraryData.json");
         BookServices.library = library;
         System.out.println("[INFO API] inizializzazione effettuata");
+        
     }
 }

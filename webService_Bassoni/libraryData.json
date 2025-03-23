@@ -1,0 +1,40 @@
+{
+  "books" : [ {
+    "id" : 1,
+    "title" : "test2",
+    "language" : null,
+    "authors" : [ {
+      "id" : 0,
+      "name" : "Tommaso",
+      "surname" : "Bassoni"
+    } ]
+  }, {
+    "id" : 2,
+    "title" : "test3",
+    "language" : null,
+    "authors" : [ {
+      "id" : 0,
+      "name" : "Tommaso",
+      "surname" : "Bassoni"
+    } ]
+  }, {
+    "id" : 5,
+    "title" : "test4_alt",
+    "language" : "italiano",
+    "authors" : [ {
+      "id" : 0,
+      "name" : "Tommaso",
+      "surname" : "Bassoni"
+    } ]
+  }, {
+    "id" : 4,
+    "title" : "test4",
+    "language" : "italiano",
+    "authors" : [ {
+      "id" : 0,
+      "name" : "Tommaso",
+      "surname" : "Bassoni"
+    } ]
+  } ],
+  "currentId" : 3
+}
