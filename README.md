@@ -3,8 +3,9 @@
 ### webService_Bassoni
 questo è un progetto eclipse maven che implementa un web service. <br>
 dopo aver eseguito il comando mvn jetty:run si avvierà il servizio. <br>
+
 servizi disponibili: <br>
-pagina home con collegamento all'autore
+pagina home con collegamento all'autore <br>
 /api/test/{nome} (GET): restituisce {nome} in maiuscolo <br>
 /api/books (GET): restituisce elenco libiri <br>
 /api/books/{id} (GET): restituisce il libro con id = {id} <br>
@@ -15,4 +16,5 @@ pagina home con collegamento all'autore
 
 ### webService_Bassoni_client
 lato client di webService_Bassoni <br>
-avviare it.edu.marconipontedera.
+eseguire il metodo it.edu.marconipontedera.tepsit.client.Main.main() per avviare il programma <br>
+il client richiederà il libro con id 1 e inserirà un libro <br>
